@@ -2,7 +2,7 @@ library(shiny)
 library(shinydashboard)
 
 dashboardPage(
-  dashboardHeader(title = "COVID 19 Dataset - Projedo de estatística",
+  dashboardHeader(title = "COVID 19 Dataset - Projeto de estatística",
                   titleWidth = 650,
                   tags$li(class="dropdown", tags$a(href="https://github.com/FrederickAlmeida/projeto-estatistica", icon("github"), "Github do Projeto", target="_blank"))
   ),
