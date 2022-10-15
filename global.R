@@ -1,4 +1,5 @@
 library(dplyr)
+library(plotly)
 my_data <- read.csv('Covid Live.csv')
 
 
@@ -27,3 +28,18 @@ my_data %>%
 # first lines
 my_data %>%
   head()
+
+p1 = my_data %>%
+  plot_ly() %>%
+  add_histogram(~Total.Cases) %>%
+  layout(xaxis = list(title= "Total Cases"))
+
+p2 = my_data %>%
+  plot_ly() %>%
+  add_boxplot(~Total.Cases) %>%
+  layout(yaxis = list(showticklabels = F))
+
+subplot(p1, p2, nrows = 2)  %>%
+  hide_legend() %>%
+  layout(title = "Total Cases - Histogram and Boxplot",
+         yaxis = list(title="Frequency"))
