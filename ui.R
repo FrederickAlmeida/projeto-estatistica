@@ -19,7 +19,12 @@ dashboardPage(
     tabItems(
       tabItem(tabName = "data",
               tabBox(id="t1", width = 12,
-                     tabPanel("About", icon=icon("address-card"), h4("tabpanel 1 placeholder")),
+                     tabPanel("About", icon=icon("address-card"),
+                              fluidRow(column(width = 8, tags$img(src="covid.jpg", width=600, height=300),
+                                              tags$br(),
+                                       column(width=8, tags$br(),
+                                              tags$p("Dataset sobre o covid 19 coletado do kaggle, contém diversos dados sobre diferentes países em relação ao vírus."),
+                                        )))),
                      tabPanel(title="Data", icon=icon("address-card"), dataTableOutput("dataT")),
                      tabPanel(title="Structure", icon=icon("address-card"), verbatimTextOutput("structure")),
                      tabPanel(title="Summary Stats", icon=icon("address-card"), verbatimTextOutput("summary"))
