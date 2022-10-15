@@ -20,9 +20,9 @@ dashboardPage(
       tabItem(tabName = "data",
               tabBox(id="t1", width = 12,
                      tabPanel("About", icon=icon("address-card"), h4("tabpanel 1 placeholder")),
-                     tabPanel(title="Data", icon=icon("address-card"), h2("tabpanel-2 placeholder UI")),
-                     tabPanel(title="Structure", icon=icon("address-card"), h2("tabpanel-3 placeholder UI")),
-                     tabPanel(title="Summary Stats", icon=icon("address-card"), h2("tabpanel-4 placeholder UI"))
+                     tabPanel(title="Data", icon=icon("address-card"), dataTableOutput("dataT")),
+                     tabPanel(title="Structure", icon=icon("address-card"), verbatimTextOutput("structure")),
+                     tabPanel(title="Summary Stats", icon=icon("address-card"), verbatimTextOutput("summary"))
               )
       ),
       tabItem(tabName = "viz",
