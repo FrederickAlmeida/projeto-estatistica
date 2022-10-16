@@ -14,7 +14,8 @@ dashboardPage(
                 conditionalPanel("input.sidebar == 'viz' && input.t2 == 'distro'", selectInput(inputId ="var1", label ="Select the variable" , choices =c1, selected="Total.Cases")),
                 conditionalPanel("input.sidebar == 'viz' && input.t2 == 'trends' ", selectInput(inputId ="var2", label ="Select the variable" , choices =c1, selected="Total.Cases")),
                 conditionalPanel("input.sidebar == 'viz' && input.t2 == 'relation' ", selectInput(inputId ="var3", label ="Select the X variable" , choices =c1, selected="Total.Cases")),
-                conditionalPanel("input.sidebar == 'viz' && input.t2 == 'relation' ", selectInput(inputId ="var4", label ="Select the Y variable" , choices =c1, selected="Total.Deaths"))
+                conditionalPanel("input.sidebar == 'viz' && input.t2 == 'relation' ", selectInput(inputId ="var4", label ="Select the Y variable" , choices =c1, selected="Total.Deaths")),
+                conditionalPanel("input.sidebar == 'viz' && input.t2 == 'line' ", selectInput(inputId ="var5", label ="Select the variable" , choices =c1, selected="Total.Deaths"))
     )
   ),
   
@@ -37,7 +38,8 @@ dashboardPage(
               tabBox(id="t2", width = 12,
                      tabPanel(title = "Country Statics", value = "trends", plotlyOutput("bar")),
                      tabPanel(title = "Distribution", value = "distro", plotlyOutput("histplot")),
-                     tabPanel(title = "Scatterplot", value = "relation", plotlyOutput("scatter"))
+                     tabPanel(title = "Scatterplot", value = "relation", plotlyOutput("scatter")),
+                     tabPanel(title = "Graphic Line", value = "line", plotlyOutput("graphicline"))
               )
       ),
       tabItem(tabName="map",
