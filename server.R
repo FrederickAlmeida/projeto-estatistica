@@ -1,5 +1,6 @@
 library(DT)
 library(ggcorrplot)
+library(ggplot2)
 function(input, output, session) {
   # structure
   output$structure <- renderPrint(
@@ -66,4 +67,19 @@ function(input, output, session) {
              yaxis = list(title=paste(input$var2)))
   })
   
+  
+  
+  output$graphicline <- renderPlotly({
+    my_data %>%
+      ggplot() +
+      geom_line(aes(x = Country..Other, y = get(input$var5), 
+                    color = Total.Deaths,group=Total.Deaths),
+                size=1) +
+      ggtitle("Graphic Line")
+  })
+  
+  
+  
 }
+
+
