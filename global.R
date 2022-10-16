@@ -1,5 +1,7 @@
 library(dplyr)
 library(plotly)
+library(ggplot2)
+library(ggtext)
 my_data <- read.csv('Covid Live.csv')
 
 
@@ -29,12 +31,23 @@ my_data %>%
 my_data %>%
   head()
 
-# criando histograma e boxplot
-
-
-
 c1 = my_data %>%
   select(-Country..Other) %>%
   select(-X.) %>%
+  select(-Population) %>%
+  select(-New.Deaths) %>%
   names()
+
+c2 = my_data %>%
+  select(-Country..Other) %>%
+  select(-X.) %>%
+  select(-Population) %>%
+  select(-New.Deaths) %>%
+  names()
+
+
+
+
+       
+
 

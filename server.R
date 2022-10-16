@@ -1,4 +1,5 @@
 library(DT)
+library(ggcorrplot)
 function(input, output, session) {
   # structure
   output$structure <- renderPrint(
@@ -38,6 +39,31 @@ function(input, output, session) {
       layout(title = "Histogram and Boxplot",
              yaxis = list(title="Frequency"))
     
+    
+  })
+  
+  output$scatter <- renderPlotly({
+    p = my_data %>% 
+      ggplot(aes(x=get(input$var3), y=get(input$var4))) +
+      geom_point() +
+      geom_smooth(method="lm") +
+      labs(title = paste("Relation between", input$var3 , "and" , input$var4),
+           x = input$var3,
+           y = input$var4) +
+      theme(  plot.title = element_textbox_simple(size=10,
+                                                  halign=0.5))
+    
+    ggplotly(p)
+  })
+  
+  
+  output$bar <- renderPlotly({
+    my_data %>%
+      plot_ly() %>%
+      add_bars(x=~Country..Other, y=~get(input$var2)) %>%
+      layout(title = paste(input$var2, "x Country"),
+             xaxis = list(title="Country"),
+             yaxis = list(title=paste(input$var2)))
   })
   
 }
