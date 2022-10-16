@@ -29,17 +29,12 @@ my_data %>%
 my_data %>%
   head()
 
-p1 = my_data %>%
-  plot_ly() %>%
-  add_histogram(~Total.Cases) %>%
-  layout(xaxis = list(title= "Total Cases"))
+# criando histograma e boxplot
 
-p2 = my_data %>%
-  plot_ly() %>%
-  add_boxplot(~Total.Cases) %>%
-  layout(yaxis = list(showticklabels = F))
 
-subplot(p1, p2, nrows = 2)  %>%
-  hide_legend() %>%
-  layout(title = "Total Cases - Histogram and Boxplot",
-         yaxis = list(title="Frequency"))
+
+c1 = my_data %>%
+  select(-Country..Other) %>%
+  select(-X.) %>%
+  names()
+
